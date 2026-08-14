@@ -78,7 +78,7 @@
   <table>
     <tr><th>O quê</th><th>Onde está</th></tr>
     <tr><td>Token do bot do grupo</td><td>Telegram → @BotFather → OfertaDoCasalbot · e no Railway (var <code>TELEGRAM_OFERTAS_TOKEN</code>)</td></tr>
-    <tr><td>Chat ID do grupo</td><td>Railway (var <code>TELEGRAM_OFERTAS_CHAT_ID</code>) — supergrupo desde 12/08</td></tr>
+    <tr><td>Endereço do canal</td><td>Railway (var <code>TELEGRAM_OFERTAS_CHAT_ID</code> = <code>@achadosdocasal</code>) — canal público, imune a migração de ID</td></tr>
     <tr><td>Tag Amazon</td><td>Railway (var <code>AMAZON_AFFILIATE_TAG</code>) + painel <a href="https://associados.amazon.com.br">associados.amazon.com.br</a></td></tr>
     <tr><td>Variáveis de produção</td><td>Railway → projeto <b>strong-inspiration</b> → serviço <b>jarvis-sdk</b> → Variables</td></tr>
     <tr><td>Worker Cérebro-Max</td><td>PC da empresa → <code>C:\Users\Dilucky\Downloads\MeuVault\JARVIS\jarvis-sdk</code> (roda oculto; recicla matando node worker_local|tsx — religa só em 5s)</td></tr>
@@ -97,21 +97,22 @@
     <tr><td>16h00 (auto)</td><td>🕓 Rodada da tarde — eletro + casa, 15 achados com foto</td></tr>
     <tr><td>19h30 (auto)</td><td>🌙 Tema do dia — seg 🍳 Cozinha · ter 🔧 Maridão · qua 💅 Patroa · qui 🎮 Família gamer · sex 🚨 ACHADÃO · sáb 🏡 Casa · dom 🍖 Gourmet — <b>+ arte Nano Banana no feed e story do Instagram</b></td></tr>
     <tr><td>Sempre</td><td>Formato alerta (🚨 na notificação) · foto grande do produto · anti-repetição de 14 dias · aviso de afiliado · cada post registrado no BigQuery (números do AO VIVO acima)</td></tr>
-    <tr><td>Diário (manual, ~10 min)</td><td>Instagram: 1 post OU 3 stories (reaproveitar a melhor oferta do grupo) + responder comentários</td></tr>
-    <tr><td>3x/semana (manual)</td><td>1 Reel faceless — é o motor de seguidores novos</td></tr>
-    <tr><td>Sob demanda</td><td><code>"Jarvis, garimpa ofertas e posta no grupo"</code> · desligar esteira: var <code>OFERTAS_CRON_ENABLED=false</code> no Railway</td></tr>
+    <tr><td>3x/semana (manual)</td><td>1 Reel faceless — é o motor de seguidores novos · responder comentários do IG quando houver</td></tr>
+    <tr><td>Sob demanda</td><td>Rodada extra: pedir à IA ("solta mais 15 de eletro") → dispara via <code>POST /rodada</code> · desligar esteira: var <code>OFERTAS_CRON_ENABLED=false</code> no Railway</td></tr>
   </table>
 </div>
 
 <div class="card">
   <h2>🎯 Próximos passos</h2>
   <ul>
-    <li>☐ Cadastrar <b>Mercado Livre Afiliados</b> (10 min — prioridade nº 1)</li>
-    <li>☐ Primeiro <b>Reel</b>: "3 achados que parecem mentira" (Stanley 50% + porta-temperos + Finish)</li>
-    <li>☐ Conta Amazon da <b>Flávia</b> → migrar tag (avisar a IA pra trocar nos 3 lugares + reciclar worker)</li>
+    <li>✅ <b>Mercado Livre Afiliados</b> ativo (12/08) — links meli.la comissionados</li>
+    <li>✅ <b>Canal público t.me/achadosdocasal</b> — 150 assinantes em 24h (13/08)</li>
+    <li>✅ <b>Instagram automático</b> (motor Nano Banana aprovado) — 1ª publicação de feed automática em validação; story junto. ⚠️ Renovar autorização da Meta antes de <b>10/11/2026</b> (procedimento no META_CREDENCIAIS.txt do vault)</li>
+    <li>☐ Primeiro <b>Reel</b>: "3 achados que parecem mentira" — motor de seguidores</li>
+    <li>☐ Conta Amazon da <b>Flávia</b> → migrar tag (avisar a IA: troca nos 3 lugares + recicla)</li>
     <li>☐ Shopee Afiliados + Magazine Você</li>
-    <li>✅ <b>Instagram 100% automático</b> (12/08): app Meta + Graph API — esteira gera a arte por IA e publica sozinha (feed 1x/dia + stories). ⚠️ Renovar autorização da Meta antes de <b>10/11/2026</b> (data-access de 90 dias — procedimento no META_CREDENCIAIS.txt do vault)</li>
-    <li>☐ Pinterest (canal faceless de longo prazo)</li>
+    <li>☐ Agente de comentários/DM do Instagram (permissão extra na renovação da Meta)</li>
+    <li>☐ Pinterest e Canal do WhatsApp (quando o Telegram tiver mais tração)</li>
   </ul>
 </div>
 
@@ -123,7 +124,8 @@
     <li>Aviso de link de afiliado em todo post (transparência)</li>
     <li>Nunca adicionar gente à força em grupo · nunca robô de engajamento no Instagram (ban)</li>
     <li>Nunca comprar/clicar nos próprios links de afiliado</li>
-    <li>Qualidade &gt; quantidade: máx ~5 posts/dia no grupo</li>
+    <li>Volume com qualidade: meta 15/rodada (~60/dia), mas só oferta verificada — a esteira posta MENOS se as fontes secarem, nunca inventa pra bater meta</li>
+    <li>Anti-repetição automática: produto igual não volta em 14 dias</li>
   </ul>
 </div>
 
