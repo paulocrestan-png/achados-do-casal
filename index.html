@@ -32,6 +32,19 @@
 <h1>🛒 Achados do Casal — Central de Operações</h1>
 <p class="sub">Operação de afiliados 100% IA · atualizado em 12/08/2026</p>
 
+<div class="card" id="aovivo">
+  <h2>🔴 AO VIVO — dados reais da esteira</h2>
+  <div class="grid">
+    <div class="kpi"><b id="lv-assinantes">…</b><span>assinantes do canal</span></div>
+    <div class="kpi"><b id="lv-hoje">…</b><span>posts hoje</span></div>
+    <div class="kpi"><b id="lv-14d">…</b><span>posts últimos 14 dias</span></div>
+  </div>
+  <div id="lv-grafico" style="display:flex;align-items:flex-end;gap:6px;height:90px;margin:12px 0 4px"></div>
+  <div id="lv-dias" style="display:flex;gap:6px;font-size:.65rem;color:var(--mut)"></div>
+  <table id="lv-ultimos" style="margin-top:10px"></table>
+  <p id="lv-status" class="sub" style="margin:8px 0 0">carregando dados reais…</p>
+</div>
+
 <div class="card">
   <h2>📊 Status da operação</h2>
   <div class="grid">
@@ -112,5 +125,33 @@
 </div>
 
 <p class="sub" style="text-align:center">Central mantida pela IA · pedir atualização: "atualiza o dash do Achados"</p>
+
+<script>
+(async function(){
+  const el = (id) => document.getElementById(id);
+  try {
+    const r = await fetch("https://jarvis-sdk-production.up.railway.app/stats");
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const s = await r.json();
+    const fmt = (v) => (v === null || v === undefined) ? "—" : v;
+    el("lv-assinantes").textContent = fmt(s.assinantes);
+    el("lv-hoje").textContent = fmt(s.posts_hoje);
+    el("lv-14d").textContent = fmt(s.posts_14d);
+    if (Array.isArray(s.por_dia) && s.por_dia.length) {
+      const max = Math.max(...s.por_dia.map(d => d.posts), 1);
+      el("lv-grafico").innerHTML = s.por_dia.map(d =>
+        `<div title="${d.dia}: ${d.posts} posts" style="flex:1;background:var(--acc);border-radius:4px 4px 0 0;height:${Math.max(8, Math.round(d.posts / max * 100))}%"></div>`).join("");
+      el("lv-dias").innerHTML = s.por_dia.map(d => `<div style="flex:1;text-align:center">${d.dia}</div>`).join("");
+    }
+    if (Array.isArray(s.ultimos) && s.ultimos.length) {
+      el("lv-ultimos").innerHTML = "<tr><th>Quando</th><th>Oferta postada</th><th>Loja</th></tr>" +
+        s.ultimos.map(u => `<tr><td style="white-space:nowrap">${u.ts}</td><td>${u.produto.replace(/</g,"&lt;")}</td><td>${u.loja}</td></tr>`).join("");
+    }
+    el("lv-status").textContent = "dados reais · atualizado " + new Date(s.atualizado_em).toLocaleTimeString("pt-BR") + " · fonte: esteira (BigQuery + Telegram)";
+  } catch (e) {
+    el("lv-status").textContent = "⚠️ não consegui falar com a esteira agora (" + e.message + ") — nada será inventado; recarrega a página em instantes.";
+  }
+})();
+</script>
 </body>
 </html>
