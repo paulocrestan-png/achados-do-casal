@@ -49,8 +49,8 @@
   <h2>📊 Status da operação</h2>
   <div class="grid">
     <div class="kpi"><b class="ok">NO AR</b><span>Esteira automática</span></div>
-    <div class="kpi"><b>12h30 · 19h30</b><span>rodadas diárias</span></div>
-    <div class="kpi"><b class="ok">ATIVA</b><span>Comissão Amazon</span></div>
+    <div class="kpi"><b>8h · 12h30 · 16h · 19h30</b><span>4 rodadas/dia, meta 15 cada</span></div>
+    <div class="kpi"><b class="ok">ATIVA</b><span>Comissão Amazon + ML</span></div>
     <div class="kpi"><b>~R$ 0</b><span>custo c/ worker ligado</span></div>
   </div>
   <table>
@@ -92,8 +92,11 @@
   <h2>⚙️ Rotinas — o que roda sozinho</h2>
   <table>
     <tr><th>Quando</th><th>O quê</th></tr>
-    <tr><td>12h30 (auto)</td><td>Esteira: garimpo + 2-3 posts de utilidade rápida no grupo + resumo no Telegram do Paulo</td></tr>
-    <tr><td>19h30 (auto)</td><td>Esteira: tema do dia — seg 🍳 Cozinha · ter 🔧 Maridão · qua 💅 Patroa · qui 🎮 Família gamer · sex 🚨 ACHADÃO · sáb 🏡 Casa · dom 🍖 Gourmet — <b>+ post automático no feed do Instagram</b> (arte por IA + legenda + link na bio)</td></tr>
+    <tr><td>8h00 (auto)</td><td>☕ Rodada da manhã — mix livre, 15 achados com foto</td></tr>
+    <tr><td>12h30 (auto)</td><td>🍽️ Rodada do almoço — utilidade rápida, 15 achados com foto</td></tr>
+    <tr><td>16h00 (auto)</td><td>🕓 Rodada da tarde — eletro + casa, 15 achados com foto</td></tr>
+    <tr><td>19h30 (auto)</td><td>🌙 Tema do dia — seg 🍳 Cozinha · ter 🔧 Maridão · qua 💅 Patroa · qui 🎮 Família gamer · sex 🚨 ACHADÃO · sáb 🏡 Casa · dom 🍖 Gourmet — <b>+ arte Nano Banana no feed e story do Instagram</b></td></tr>
+    <tr><td>Sempre</td><td>Formato alerta (🚨 na notificação) · foto grande do produto · anti-repetição de 14 dias · aviso de afiliado · cada post registrado no BigQuery (números do AO VIVO acima)</td></tr>
     <tr><td>Diário (manual, ~10 min)</td><td>Instagram: 1 post OU 3 stories (reaproveitar a melhor oferta do grupo) + responder comentários</td></tr>
     <tr><td>3x/semana (manual)</td><td>1 Reel faceless — é o motor de seguidores novos</td></tr>
     <tr><td>Sob demanda</td><td><code>"Jarvis, garimpa ofertas e posta no grupo"</code> · desligar esteira: var <code>OFERTAS_CRON_ENABLED=false</code> no Railway</td></tr>
