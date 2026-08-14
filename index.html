@@ -30,7 +30,7 @@
 </head>
 <body>
 <h1>🛒 Achados do Casal — Central de Operações</h1>
-<p class="sub">Operação de afiliados 100% IA · atualizado em 12/08/2026</p>
+<p class="sub">Operação de afiliados 100% IA · atualizado em 14/08/2026</p>
 
 <div class="card" id="aovivo">
   <h2>🔴 AO VIVO — dados reais da esteira</h2>
@@ -38,9 +38,14 @@
     <div class="kpi"><b id="lv-assinantes">…</b><span>assinantes do canal</span></div>
     <div class="kpi"><b id="lv-hoje">…</b><span>posts hoje</span></div>
     <div class="kpi"><b id="lv-14d">…</b><span>posts últimos 14 dias</span></div>
+    <div class="kpi"><b id="lv-views">…</b><span>👀 views nos posts de hoje</span></div>
+    <div class="kpi"><b id="lv-cliques">…</b><span>🖱️ cliques hoje</span></div>
+    <div class="kpi"><b id="lv-cliques14">…</b><span>🖱️ cliques 14 dias</span></div>
   </div>
   <div id="lv-grafico" style="display:flex;align-items:flex-end;gap:6px;height:90px;margin:12px 0 4px"></div>
   <div id="lv-dias" style="display:flex;gap:6px;font-size:.65rem;color:var(--mut)"></div>
+  <table id="lv-top" style="margin-top:10px"></table>
+  <p id="lv-lojas" class="sub" style="margin:8px 0 0"></p>
   <table id="lv-ultimos" style="margin-top:10px"></table>
   <p id="lv-status" class="sub" style="margin:8px 0 0">carregando dados reais…</p>
 </div>
@@ -49,14 +54,14 @@
   <h2>📊 Status da operação</h2>
   <div class="grid">
     <div class="kpi"><b class="ok">NO AR</b><span>Esteira automática</span></div>
-    <div class="kpi"><b>8h · 12h30 · 16h · 19h30</b><span>4 rodadas/dia, meta 15 cada</span></div>
+    <div class="kpi"><b>7 rodadas/dia</b><span>8h·10h·12h30·14h30·16h·19h30·22h — meta 15-20</span></div>
     <div class="kpi"><b class="ok">ATIVA</b><span>Comissão Amazon + ML</span></div>
     <div class="kpi"><b>~R$ 0</b><span>custo c/ worker ligado</span></div>
   </div>
   <table>
     <tr><td>Canal Telegram</td><td><a href="https://t.me/achadosdocasal">t.me/achadosdocasal</a> — canal PÚBLICO (migrado do grupo em 12/08: assinantes anônimos, aparece na busca do Telegram)</td></tr>
     <tr><td>Bot do grupo</td><td>@OfertaDoCasalbot (admin) — posta via esteira do Jarvis</td></tr>
-    <tr><td>Instagram</td><td>⛔ <b>Desativado (14/08)</b> — operação 100% Telegram por decisão do Paulo; conta @achados_do.casal existe mas fora da esteira</td></tr>
+    <tr><td>Instagram</td><td>✅ <a href="https://www.instagram.com/achados_do.casal">@achados_do.casal</a> — <b>motor de crescimento</b>: feed + story automáticos na rodada da noite (arte Nano Banana), missão = trazer gente do IG pro canal (link na bio)</td></tr>
     <tr><td>Nicho</td><td>Casa, cozinha, organização e eletro — <b>sem teto de preço</b>: critério é o desconto (≥40% itens pequenos · ≥25% eletro/móveis = 🚨 ACHADÃO)</td></tr>
   </table>
 </div>
@@ -92,11 +97,15 @@
   <h2>⚙️ Rotinas — o que roda sozinho</h2>
   <table>
     <tr><th>Quando</th><th>O quê</th></tr>
-    <tr><td>8h00 (auto)</td><td>☕ Rodada da manhã — mix livre, 15 achados com foto</td></tr>
-    <tr><td>12h30 (auto)</td><td>🍽️ Rodada do almoço — utilidade rápida, 15 achados com foto</td></tr>
-    <tr><td>16h00 (auto)</td><td>🕓 Rodada da tarde — eletro + casa, 15 achados com foto</td></tr>
-    <tr><td>19h30 (auto)</td><td>🌙 Tema do dia — seg 🍳 Cozinha · ter 🔧 Maridão · qua 💅 Patroa · qui 🎮 Família gamer · sex 🚨 ACHADÃO · sáb 🏡 Casa · dom 🍖 Gourmet</td></tr>
-    <tr><td>Sempre</td><td>Formato alerta (🚨 na notificação) · foto grande do produto · anti-repetição de 14 dias · aviso de afiliado · cada post registrado no BigQuery (números do AO VIVO acima)</td></tr>
+    <tr><td>8h00 (auto)</td><td>☕ Rodada da manhã — mix livre, meta 15</td></tr>
+    <tr><td>10h00 (auto)</td><td>🌤️ Meio da manhã — reforço do garimpo, meta 20</td></tr>
+    <tr><td>12h30 (auto)</td><td>🍽️ Rodada do almoço — utilidade rápida, meta 15</td></tr>
+    <tr><td>14h30 (auto)</td><td>🕑 Meio da tarde — organização + eletroportáteis, meta 20</td></tr>
+    <tr><td>16h00 (auto)</td><td>🕓 Rodada da tarde — eletro + casa, meta 15</td></tr>
+    <tr><td>19h30 (auto)</td><td>🌙 Tema do dia (meta 15) — seg 🍳 Cozinha · ter 🔧 Maridão · qua 💅 Patroa · qui 🎮 Família gamer · sex 🚨 ACHADÃO · sáb 🏡 Casa · dom 🍖 Gourmet — <b>+ arte Nano Banana no feed e story do Instagram</b></td></tr>
+    <tr><td>22h00 (auto)</td><td>🌙 Última chamada — ofertas-relâmpago da noite, meta 20</td></tr>
+    <tr><td>5x/dia (auto)</td><td>👀 Coleta de views por post (t.me/s) + snapshot de assinantes → alimenta o AO VIVO (custo zero, sem IA)</td></tr>
+    <tr><td>Sempre</td><td>Formato alerta (🚨 na notificação) · foto grande do produto (recusa thumbnail) · anti-repetição de 14 dias · aviso de afiliado · links ML/Shopee/Magalu rastreados (🖱️ cliques no AO VIVO; Amazon fica direto pra proteger a atribuição) · tudo registrado no BigQuery</td></tr>
     <tr><td>3x/semana (manual)</td><td>1 Reel faceless — é o motor de seguidores novos · responder comentários do IG quando houver</td></tr>
     <tr><td>Sob demanda</td><td>Rodada extra: pedir à IA ("solta mais 15 de eletro") → dispara via <code>POST /rodada</code> · desligar esteira: var <code>OFERTAS_CRON_ENABLED=false</code> no Railway</td></tr>
   </table>
@@ -107,8 +116,10 @@
   <ul>
     <li>✅ <b>Mercado Livre Afiliados</b> ativo (12/08) — links meli.la comissionados</li>
     <li>✅ <b>Canal público t.me/achadosdocasal</b> — 150 assinantes em 24h (13/08)</li>
-    <li>⛔ <b>Instagram desativado da esteira (14/08)</b> — operação 100% Telegram; motor Nano Banana e tools de IG preservados no código caso volte um dia</li>
+    <li>✅ <b>Instagram automático DE VOLTA (14/08)</b> — é o motor de crescimento: feed + story na rodada da noite. ⚠️ Renovar autorização da Meta antes de <b>10/11/2026</b> (procedimento no META_CREDENCIAIS.txt do vault)</li>
     <li>✅ <b>Fotos em alta resolução (14/08)</b> — tool mede a imagem e recusa thumbnail; ML corrigido (sufixo -AB + slug SEO travavam a foto em 448px; agora 1200px)</li>
+    <li>✅ <b>Funil de dados (14/08)</b> — views por post + cliques rastreados + evolução de assinantes no AO VIVO, pra aprender o que converte</li>
+    <li>☐ Agente de comentários/DM do Instagram (permissão extra na renovação da Meta)</li>
     <li>☐ Primeiro <b>Reel</b>: "3 achados que parecem mentira" — motor de seguidores</li>
     <li>☐ Conta Amazon da <b>Flávia</b> → migrar tag (avisar a IA: troca nos 3 lugares + recicla)</li>
     <li>☐ Shopee Afiliados + Magazine Você</li>
@@ -142,6 +153,17 @@
     el("lv-assinantes").textContent = fmt(s.assinantes);
     el("lv-hoje").textContent = fmt(s.posts_hoje);
     el("lv-14d").textContent = fmt(s.posts_14d);
+    el("lv-views").textContent = fmt(s.views_hoje);
+    el("lv-cliques").textContent = fmt(s.cliques_hoje);
+    el("lv-cliques14").textContent = fmt(s.cliques_14d);
+    if (Array.isArray(s.top_views) && s.top_views.length) {
+      el("lv-top").innerHTML = "<tr><th>👀</th><th>Posts mais vistos (14 dias)</th><th>Loja</th></tr>" +
+        s.top_views.map(t => `<tr><td><b>${t.views}</b></td><td>${String(t.produto).replace(/</g,"&lt;")}</td><td>${t.loja}</td></tr>`).join("");
+    }
+    if (Array.isArray(s.cliques_por_loja) && s.cliques_por_loja.length) {
+      el("lv-lojas").textContent = "🖱️ cliques por loja (14d): " +
+        s.cliques_por_loja.map(c => `${c.loja} ${c.cliques}`).join(" · ");
+    }
     if (Array.isArray(s.por_dia) && s.por_dia.length) {
       const max = Math.max(...s.por_dia.map(d => d.posts), 1);
       el("lv-grafico").innerHTML = s.por_dia.map(d =>
@@ -149,8 +171,8 @@
       el("lv-dias").innerHTML = s.por_dia.map(d => `<div style="flex:1;text-align:center">${d.dia}</div>`).join("");
     }
     if (Array.isArray(s.ultimos) && s.ultimos.length) {
-      el("lv-ultimos").innerHTML = "<tr><th>Quando</th><th>Oferta postada</th><th>Loja</th></tr>" +
-        s.ultimos.map(u => `<tr><td style="white-space:nowrap">${u.ts}</td><td>${u.produto.replace(/</g,"&lt;")}</td><td>${u.loja}</td></tr>`).join("");
+      el("lv-ultimos").innerHTML = "<tr><th>Quando</th><th>Oferta postada</th><th>Loja</th><th>👀</th></tr>" +
+        s.ultimos.map(u => `<tr><td style="white-space:nowrap">${u.ts}</td><td>${u.produto.replace(/</g,"&lt;")}</td><td>${u.loja}</td><td>${(u.views === null || u.views === undefined) ? "—" : u.views}</td></tr>`).join("");
     }
     el("lv-status").textContent = "dados reais · atualizado " + new Date(s.atualizado_em).toLocaleTimeString("pt-BR") + " · fonte: esteira (BigQuery + Telegram)";
   } catch (e) {
