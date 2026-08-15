@@ -55,7 +55,7 @@
   <h2>📊 Status da operação</h2>
   <div class="grid">
     <div class="kpi"><b class="ok">NO AR</b><span>Esteira automática</span></div>
-    <div class="kpi"><b>7 rodadas/dia</b><span>8h·10h·12h30·14h30·16h·19h30·22h — meta 15-20</span></div>
+    <div class="kpi"><b>3 rodadas/dia</b><span>8h · 12h30 · 19h30 — meta 10 (qualidade > volume)</span></div>
     <div class="kpi"><b class="ok">ATIVA</b><span>Comissão Amazon + ML</span></div>
     <div class="kpi"><b>~R$ 0</b><span>custo c/ worker ligado</span></div>
   </div>
@@ -98,13 +98,10 @@
   <h2>⚙️ Rotinas — o que roda sozinho</h2>
   <table>
     <tr><th>Quando</th><th>O quê</th></tr>
-    <tr><td>8h00 (auto)</td><td>☕ Rodada da manhã — mix livre, meta 15</td></tr>
-    <tr><td>10h00 (auto)</td><td>🌤️ Meio da manhã — reforço do garimpo, meta 20</td></tr>
-    <tr><td>12h30 (auto)</td><td>🍽️ Rodada do almoço — utilidade rápida, meta 15</td></tr>
-    <tr><td>14h30 (auto)</td><td>🕑 Meio da tarde — organização + eletroportáteis, meta 20</td></tr>
-    <tr><td>16h00 (auto)</td><td>🕓 Rodada da tarde — eletro + casa, meta 15</td></tr>
-    <tr><td>19h30 (auto)</td><td>🌙 Tema do dia (meta 15) — seg 🍳 Cozinha · ter 🔧 Maridão · qua 💅 Patroa · qui 🎮 Família gamer · sex 🚨 ACHADÃO · sáb 🏡 Casa · dom 🍖 Gourmet — <b>+ arte Nano Banana no feed e story do Instagram</b></td></tr>
-    <tr><td>22h00 (auto)</td><td>🌙 Última chamada — ofertas-relâmpago da noite, meta 20</td></tr>
+    <tr><td>8h00 (auto)</td><td>☕ Rodada da manhã — mix livre, meta 10</td></tr>
+    <tr><td>12h30 (auto)</td><td>🍽️ Rodada do almoço — utilidade rápida, meta 10</td></tr>
+    <tr><td>19h30 (auto)</td><td>🌙 Tema do dia (meta 10) — seg 🍳 Cozinha · ter 🔧 Maridão · qua 💅 Patroa · qui 🎮 Família gamer · sex 🚨 ACHADÃO · sáb 🏡 Casa · dom 🍖 Gourmet — <b>+ 1 arte Nano Banana/dia no feed e story do Instagram</b></td></tr>
+    <tr><td>Sob demanda</td><td>Rodadas extras (meio da manhã/tarde, 22h) continuam disponíveis via <code>POST /rodada?slot=…</code>, só não rodam sozinhas</td></tr>
     <tr><td>5x/dia (auto)</td><td>👀 Coleta de views por post (t.me/s) + snapshot de assinantes → alimenta o AO VIVO (custo zero, sem IA)</td></tr>
     <tr><td>Sempre</td><td>Formato alerta (🚨 na notificação) · foto grande do produto (recusa thumbnail) · anti-repetição de 14 dias · aviso de afiliado · links ML/Shopee/Magalu rastreados (🖱️ cliques no AO VIVO; Amazon fica direto pra proteger a atribuição) · tudo registrado no BigQuery</td></tr>
     <tr><td>3x/semana (manual)</td><td>1 Reel faceless — é o motor de seguidores novos · responder comentários do IG quando houver</td></tr>
@@ -120,6 +117,8 @@
     <li>✅ <b>Instagram automático DE VOLTA (14/08)</b> — é o motor de crescimento: feed + story na rodada da noite. ⚠️ Renovar autorização da Meta antes de <b>10/11/2026</b> (procedimento no META_CREDENCIAIS.txt do vault)</li>
     <li>✅ <b>Fotos em alta resolução (14/08)</b> — tool mede a imagem e recusa thumbnail; ML corrigido (sufixo -AB + slug SEO travavam a foto em 448px; agora 1200px)</li>
     <li>✅ <b>Funil de dados (14/08)</b> — views por post + cliques rastreados + evolução de assinantes no AO VIVO, pra aprender o que converte</li>
+    <li>⚖️ <b>Volume cortado (15/08)</b> — 57 posts/dia geravam só 73 views e o canal PERDIA assinantes (164→156). Agora 3 rodadas × 10 posts, com qualidade acima de quantidade. Custo Anthropic: US$45-85 → <b>US$15-27/mês</b></li>
+    <li>🎯 <b>Métrica que destrava escalar de novo</b>: cliques/dia. Ponto de equilíbrio (~R$400/mês) exigiria 65-170 cliques/dia; hoje são 2. Só volta a subir volume quando o funil justificar</li>
     <li>☐ Agente de comentários/DM do Instagram (permissão extra na renovação da Meta)</li>
     <li>☐ Primeiro <b>Reel</b>: "3 achados que parecem mentira" — motor de seguidores</li>
     <li>☐ Conta Amazon da <b>Flávia</b> → migrar tag (avisar a IA: troca nos 3 lugares + recicla)</li>
