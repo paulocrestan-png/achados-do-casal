@@ -41,6 +41,7 @@
     <div class="kpi"><b id="lv-views">…</b><span>👀 views nos posts de hoje</span></div>
     <div class="kpi"><b id="lv-cliques">…</b><span>🖱️ cliques hoje</span></div>
     <div class="kpi"><b id="lv-cliques14">…</b><span>🖱️ cliques 14 dias</span></div>
+    <div class="kpi"><b id="lv-fotos">…</b><span>📸 fotos boas / ruins / sem (hoje)</span></div>
   </div>
   <div id="lv-grafico" style="display:flex;align-items:flex-end;gap:6px;height:90px;margin:12px 0 4px"></div>
   <div id="lv-dias" style="display:flex;gap:6px;font-size:.65rem;color:var(--mut)"></div>
@@ -156,6 +157,7 @@
     el("lv-views").textContent = fmt(s.views_hoje);
     el("lv-cliques").textContent = fmt(s.cliques_hoje);
     el("lv-cliques14").textContent = fmt(s.cliques_14d);
+    el("lv-fotos").textContent = `${fmt(s.fotos_boas_hoje)} / ${fmt(s.fotos_ruins_hoje)} / ${fmt(s.sem_foto_hoje)}`;
     if (Array.isArray(s.top_views) && s.top_views.length) {
       el("lv-top").innerHTML = "<tr><th>👀</th><th>Posts mais vistos (14 dias)</th><th>Loja</th></tr>" +
         s.top_views.map(t => `<tr><td><b>${t.views}</b></td><td>${String(t.produto).replace(/</g,"&lt;")}</td><td>${t.loja}</td></tr>`).join("");
