@@ -51,6 +51,19 @@
   <p id="lv-status" class="sub" style="margin:8px 0 0">carregando dados reais…</p>
 </div>
 
+<div class="card" id="insta">
+  <h2>📸 Instagram — performance real</h2>
+  <div class="grid">
+    <div class="kpi"><b id="ig-seg">…</b><span>seguidores</span></div>
+    <div class="kpi"><b id="ig-alc">…</b><span>alcance hoje</span></div>
+    <div class="kpi"><b id="ig-vis">…</b><span>visitas ao perfil hoje</span></div>
+    <div class="kpi"><b id="ig-posts">…</b><span>posts publicados</span></div>
+  </div>
+  <p class="sub" style="margin:12px 0 6px">Ranking por alcance — é o que ensina qual produto atrai:</p>
+  <table id="ig-top"></table>
+  <p id="ig-status" class="sub" style="margin:8px 0 0">carregando…</p>
+</div>
+
 <div class="card">
   <h2>📊 Status da operação</h2>
   <div class="grid">
@@ -176,6 +189,24 @@
         s.ultimos.map(u => `<tr><td style="white-space:nowrap">${u.ts}</td><td>${u.produto.replace(/</g,"&lt;")}</td><td>${u.loja}</td><td>${(u.views === null || u.views === undefined) ? "—" : u.views}</td></tr>`).join("");
     }
     el("lv-status").textContent = "dados reais · atualizado " + new Date(s.atualizado_em).toLocaleTimeString("pt-BR") + " · fonte: esteira (BigQuery + Telegram)";
+
+    // ── Aba Instagram (dados da Graph API) ──────────────────────────────
+    const ig = s.instagram || {};
+    el("ig-seg").textContent = fmt(ig.seguidores);
+    el("ig-alc").textContent = fmt(ig.alcance_dia);
+    el("ig-vis").textContent = fmt(ig.visitas_perfil_dia);
+    el("ig-posts").textContent = fmt(ig.posts);
+    if (Array.isArray(ig.top_posts) && ig.top_posts.length) {
+      el("ig-top").innerHTML =
+        "<tr><th>Alcance</th><th>Post</th><th>Curtidas</th><th>Data</th></tr>" +
+        ig.top_posts.slice(0, 8).map(p =>
+          `<tr><td><b>${fmt(p.alcance)}</b></td>` +
+          `<td><a href="${p.link}" target="_blank">${(p.titulo || "(sem título)").replace(/</g, "&lt;")}</a></td>` +
+          `<td>${p.curtidas}</td><td style="white-space:nowrap">${(p.data || "").split("-").reverse().slice(0, 2).join("/")}</td></tr>`).join("");
+      el("ig-status").textContent = "dados reais da Meta · atualiza a cada 5 min";
+    } else {
+      el("ig-status").textContent = ig.erro ? ("⚠️ " + ig.erro) : "sem posts com métrica ainda";
+    }
   } catch (e) {
     el("lv-status").textContent = "⚠️ não consegui falar com a esteira agora (" + e.message + ") — nada será inventado; recarrega a página em instantes.";
   }
